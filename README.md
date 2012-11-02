@@ -28,15 +28,15 @@ This plugin handles the Base64 encoding and automatically sets the `Authorizatio
 
 ## API
 
-### `Backbone.BasicAuth.set(username, password)`
+#### `Backbone.BasicAuth.set(username, password)`
 
 Sets the access token which is used by all future remote requests, until `clear()` is called.
 
-### `Backbone.BasicAuth.clear()`
+#### `Backbone.BasicAuth.clear()`
 
 Clears the access token and restores the standard `Backbone.sync`.
 
 ## Dependencies
 
  - [Backbone](http://backbonejs.org)
- - [JavaScript `btoa()` function](https://developer.mozilla.org/en-US/docs/DOM/window.btoa) (a [polyfill](https://github.com/davidchambers/Base64.js) is available if `btoa()` is not supported in your target browser)
+ - JavaScript [`btoa()`](https://developer.mozilla.org/en-US/docs/DOM/window.btoa) function (a [polyfill](https://github.com/davidchambers/Base64.js) is available if `btoa()` is not supported in your target browser)

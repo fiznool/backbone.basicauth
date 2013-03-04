@@ -5,12 +5,13 @@ This plugin enables access to remote resources which are protected by [HTTP Basi
 Usage:
 
 ``` js
-var model = Backbone.Model.extend({
+var Model = Backbone.Model.extend({
   url: 'http://path/to/basic/auth/protected/resource'
 });
 
 Backbone.BasicAuth.set('username', 'password');
 
+var model = new Model();
 model.fetch();
 ```
 

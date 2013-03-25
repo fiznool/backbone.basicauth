@@ -41,3 +41,9 @@ Clears the access token and restores the standard `Backbone.sync`.
 
  - [Backbone](http://backbonejs.org)
  - JavaScript [`btoa()`](https://developer.mozilla.org/en-US/docs/DOM/window.btoa) function (a [polyfill](https://github.com/davidchambers/Base64.js) is available if `btoa()` is not supported in your target browser)
+
+## Server-side
+
+The idea of this plugin is to adhere to the standard [HTTP Basic Authentication](http://www.ietf.org/rfc/rfc2617.txt) scheme. There is bound to be a 'basic' way to read the username / password combination in your chosen server-side language.
+
+[See here for a PHP example.](http://php.net/manual/en/features.http-auth.php)

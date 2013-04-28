@@ -1,0 +1,15 @@
+{
+  "name": "backbone.basicauth",
+  "version": "0.2.0",
+  "main": "backbone.basicauth.js",
+  "dependencies": {
+    "backbone": "~1.0"
+  },
+  "readmeFilename": "README.md",
+  "_id": "backbone.basicauth@0.2.0",
+  "description": "This plugin enables access to remote resources which are protected by [HTTP Basic Authentication](http://www.ietf.org/rfc/rfc2617.txt) through your Backbone Models and Collections.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fiznool/backbone.basicauth"
+  }
+}

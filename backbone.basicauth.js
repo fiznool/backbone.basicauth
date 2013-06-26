@@ -39,6 +39,10 @@
       token = encode(username, password);
     },
 
+    setToken: function(authtoken) {
+      token = authtoken;        
+    },
+
     // Clear Basic Authentication for all future requests
     clear: function() {
       token = null;

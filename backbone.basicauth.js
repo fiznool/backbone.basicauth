@@ -47,8 +47,10 @@
    * @return {object}         Reference to Backbone.sync for chaining
    */
   Backbone.Collection.prototype.sync = Backbone.Model.prototype.sync = function backboneSyncOverride ( method, context, options ) {
+    // Handle both string and function urls
+    var remoteURL = ( _.isFunction( context.url ) ) ? context.url() : context.url ;
     // Retrieve the auth credentials from the context url
-    var credentials = context.url.match( /\/\/(.*):(.*)@/ ),
+    var credentials = remoteURL.match( /\/\/(.*):(.*)@/ ),
         token;
     // Set the token if available
     if ( credentials && credentials.length === 3 ) {

@@ -6,10 +6,8 @@ Usage:
 
 ``` js
 var Model = Backbone.Model.extend({
-  url: 'http://path/to/basic/auth/protected/resource'
+  url: 'http://username:password@path/to/basic/auth/protected/resource'
 });
-
-Backbone.BasicAuth.set('username', 'password');
 
 var model = new Model();
 model.fetch();
@@ -26,16 +24,6 @@ Authorization: Basic <accesstoken>
 The access token is formed by taking the username and password, concatenating together with a `:` separator and encoding into Base64.
 
 This plugin handles the Base64 encoding and automatically sets the `Authorization` header on every request which uses `Backbone.sync`.
-
-## API
-
-#### `Backbone.BasicAuth.set(username, password)`
-
-Sets the access token which is used by all future remote requests, until `clear()` is called.
-
-#### `Backbone.BasicAuth.clear()`
-
-Clears the access token and restores the standard `Backbone.sync`.
 
 ## Dependencies
 

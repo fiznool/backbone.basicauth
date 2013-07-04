@@ -10,7 +10,7 @@
   // AMD module if available
   if ( typeof define === 'function' && define.amd ) {
     // AMD
-    define( 'Backbone.basicAuth', [ 'Underscore', 'Backbone' ], function BackboneBasicAuthDefineCallback ( Underscore, Backbone ) {
+    define( 'BackboneBasicAuth', [ 'Underscore', 'Backbone' ], function BackboneBasicAuthDefineCallback ( Underscore, Backbone ) {
       factory( root, Underscore, Backbone );
     } );
   } else {

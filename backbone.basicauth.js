@@ -41,7 +41,7 @@
    *
    * If a token is present, set the Basic Auth header before the sync is performed.
    *
-   * @param  {string} method  Contains the request method. e.g.: GET, POST, etc
+   * @param  {string} method  Contains the backbone operation. e.g.: read, reset, set
    * @param  {object} context A Backbone model or collection
    * @param  {object} options Options to be passed over to Backbone.sync and jQuery
    * @return {object}         Reference to Backbone.sync for chaining

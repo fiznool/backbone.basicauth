@@ -40,8 +40,8 @@ The idea of this plugin is to adhere to the standard [HTTP Basic Authentication]
 
 ### v0.3.0 (22nd July 2013)
 
- - Moved to use the standard method of HTTP Basic Authentication, by adding username:password to the URL string. The old method of setting the Basic Auth token (`Backbone.BasicAuth.set` / `Backbone.BasicAuth.remove`) has now been removed from the codebase. Thanks to [https://github.com/lmjabreu](Luis Abreu) for the PR.
- - Added AMD support (thanks again [https://github.com/lmjabreu](Luis Abreu)).
+ - Moved to use the standard method of HTTP Basic Authentication, by adding `username:password` to the URL string. The old method of setting the Basic Auth token (`Backbone.BasicAuth.set` / `Backbone.BasicAuth.remove`) has now been removed from the codebase. Thanks to [Luis Abreu](https://github.com/lmjabreu) for the PR.
+ - Added AMD support (thanks again [Luis Abreu](https://github.com/lmjabreu)).
 
 ### v0.2.0 (1st May 2013)
 

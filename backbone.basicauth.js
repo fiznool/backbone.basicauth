@@ -1,7 +1,9 @@
 /*!
- * backbone.basicauth.js v0.3.0
+ * backbone.basicauth.js v0.4.0
  *
- * Automatically parses the model/collection.url for http auth credentials
+ * Adds HTTP Basic Authentication headers,
+ * either by reading them from a model property,
+ * or by parsing the model/collection.url.
  *
  * Copyright 2013, Tom Spencer (@fiznool), Luis Abreu (@lmjabreu)
  * backbone.basicauth.js may be freely distributed under the MIT license.
@@ -25,11 +27,23 @@
    * @param  {string} password The http auth password
    * @return {string}          The base64 encoded credentials pair
    */
-  var encode = function encodeToken (username, password) {
+  var encode = function(credentials) {
     // Use Base64 encoding to create the authentication details
     // If btoa is not available on your target browser there is a polyfill:
     // https://github.com/davidchambers/Base64.js
-    return btoa([username, password].join(':'));
+    // Using unescape and encodeURIComponent to allow for Unicode strings
+    // https://developer.mozilla.org/en-US/docs/Web/API/window.btoa#Unicode_Strings
+    return btoa(unescape(encodeURIComponent(
+      [credentials.username, credentials.password].join(':'))));
+  };
+
+  // Add a public method so that anything else can also create the header
+  Backbone.BasicAuth = {
+    getHeader: function(credentials) {
+      return {
+        'Authorization': 'Basic ' + encode(credentials)
+      };
+    }
   };
 
   // Store a copy of the original Backbone.sync
@@ -46,22 +60,34 @@
    * @return {object}         Reference to Backbone.sync for chaining
    */
   Backbone.sync = function (method, model, options) {
-    // Handle both string and function urls
-    var remoteURL = _.result(model, 'url');
 
-    // Retrieve the auth credentials from the model url
-    var credentials = remoteURL.match(/\/\/(.*):(.*)@/),
-        token;
+    // Basic Auth supports two modes: URL-based and function-based.
+    var credentials, remoteUrl, remoteUrlParts;
 
-    // Set the token if available
-    if (credentials && credentials.length === 3) {
-      token = encode(credentials[1], credentials[2]);
+    if(model.basicAuthCredentials) {
+      // Try function-based.
+      credentials = _.result(model, 'basicAuthCredentials');
+    }
+
+    if(credentials == null) {
+      // Try URL-based.
+      // Handle both string and function urls
+      remoteURL = options.url || _.result(model, 'url');
+
+      // Retrieve the auth credentials from the model url
+      remoteUrlParts = remoteURL.match(/\/\/(.*):(.*)@/);
+      if (remoteUrlParts && remoteUrlParts.length === 3) {
+        credentials = {
+          username: remoteUrlParts[1],
+          password: remoteUrlParts[2]
+        };
+      }
     }
 
     // Add the token to the request headers if available
-    if (token != null) {
+    if (credentials != null) {
       options.headers = options.headers || {};
-      _.extend(options.headers, { 'Authorization': 'Basic ' + token });
+      _.extend(options.headers, Backbone.BasicAuth.getHeader(credentials));
     }
 
     // Perform the sync

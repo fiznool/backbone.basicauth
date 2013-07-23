@@ -13,9 +13,9 @@
         define(['underscore', 'backbone'], factory);
     } else {
         // Browser globals
-        root.amdWeb = factory(root.Backbone, root._);
+        root.amdWeb = factory(root._, root.Backbone);
     }
-}( this, function (Backbone, _) {
+}( this, function (_, Backbone) {
 
   var btoa = window.btoa;
 

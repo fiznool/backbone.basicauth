@@ -47,7 +47,7 @@
    */
   Backbone.sync = function (method, model, options) {
     // Handle both string and function urls
-    var remoteURL = _result(model, 'url');
+    var remoteURL = _.result(model, 'url');
 
     // Retrieve the auth credentials from the model url
     var credentials = remoteURL.match(/\/\/(.*):(.*)@/),

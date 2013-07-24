@@ -64,9 +64,9 @@
     // Basic Auth supports two modes: URL-based and function-based.
     var credentials, remoteUrl, remoteUrlParts;
 
-    if(model.basicAuthCredentials) {
+    if(model.credentials) {
       // Try function-based.
-      credentials = _.result(model, 'basicAuthCredentials');
+      credentials = _.result(model, 'credentials');
     }
 
     if(credentials == null) {

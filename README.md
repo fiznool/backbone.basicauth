@@ -7,7 +7,7 @@ This plugin enables access to remote resources which are protected by [HTTP Basi
 You can set Basic Authentication credentials in two ways:
 
  - Directly on the model/collection `url` property.
- - Via a separate model/collection property: `basicAuthCredentials`.
+ - Via a separate model/collection property: `credentials`.
 
 ### URL mode
 
@@ -36,13 +36,13 @@ var Model = Backbone.Model.extend({
 });
 
 var model = new Model();
-model.basicAuthCredentials = {
+model.credentials = {
 	username: 'user',
 	password: 'pass'
 };
 
 // or ...
-model.basicAuthCredentials = function() {
+model.credentials = function() {
 	return {
 		username: 'user',
 		password: 'pass'
@@ -52,7 +52,7 @@ model.basicAuthCredentials = function() {
 model.fetch();
 ```
 
-This mode is good for authentication that may change when the app is used, e.g. if different users log in to the app. The credentials can be set at run-time instead of being hard coded on the URL.
+This mode is good for authentication that may change when the app is used, e.g. if different users are able to authenticate with the app. The credentials can be set at run-time instead of being hard coded on the URL.
 
 It is possible to emulate this mode using the URL-based approach above (by using some String replacement to inject the `username:password@` into the URL) but this approach is often easier.
 
@@ -106,7 +106,7 @@ The idea of this plugin is to adhere to the standard [HTTP Basic Authentication]
 
 ### v0.4.0 (23rd July 2013)
 
-- Re-introduced concept of setting Basic Auth credentials in a function, in addition to URL-based method.
+- Re-introduced concept of setting Basic Auth credentials from a function, in addition to URL-based method.
 
 ### v0.3.0 (22nd July 2013)
 

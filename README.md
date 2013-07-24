@@ -6,27 +6,12 @@ This plugin enables access to remote resources which are protected by [HTTP Basi
 
 You can set Basic Authentication credentials in two ways:
 
- - Directly on the model/collection `url` property.
  - Via a separate model/collection property: `credentials`.
+ - Directly on the model/collection `url` property.
 
-### URL mode
+If you are unsure which mode to pick, use the `credentials` property on the model.
 
-Usage:
-
-``` js
-var Model = Backbone.Model.extend({
-  url: 'http://username:password@path/to/basic/auth/protected/resource'
-});
-
-var model = new Model();
-model.fetch();
-```
-
-This mode is good for simple models where the username/password is unlikely to change, e.g. a fixed API key for your app. The plugin takes care of parsing the URL to create the necessary Basic Authentication header, and jQuery removes the `username:password@` portion of the URL so your username and password isn't sent to the server on the URL.
-
-Thanks goes to [Luis Abreu](https://github.com/lmjabreu) for his work implementing this.
-
-### Function mode
+### `model.credentials`
 
 Usage:
 
@@ -52,9 +37,26 @@ model.credentials = function() {
 model.fetch();
 ```
 
-This mode is good for authentication that may change when the app is used, e.g. if different users are able to authenticate with the app. The credentials can be set at run-time instead of being hard coded on the URL.
+This mode is good for authentication that may change when the app is used, e.g. if different users are able to authenticate with the app. The credentials can be hard coded or set dynamically.
 
-It is possible to emulate this mode using the URL-based approach above (by using some String replacement to inject the `username:password@` into the URL) but this approach is often easier.
+This mode is the most flexible. If you are unsure which mode to use, try this one first.
+
+### `model.url`
+
+Usage:
+
+``` js
+var Model = Backbone.Model.extend({
+  url: 'http://username:password@path/to/basic/auth/protected/resource'
+});
+
+var model = new Model();
+model.fetch();
+```
+
+This mode is good for models where the username/password is unlikely to change, e.g. a fixed API key for your app. The plugin takes care of parsing the URL to create the necessary Basic Authentication header, and jQuery removes the credentials from the URL so your username and password isn't sent to the server directly on the URL.
+
+Thanks goes to [Luis Abreu](https://github.com/lmjabreu) for his work implementing this.
 
 ## How does it work?
 

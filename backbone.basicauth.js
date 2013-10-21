@@ -43,7 +43,8 @@
       return {
         'Authorization': 'Basic ' + encode(credentials)
       };
-    }
+    },
+    defaultCredentials: false
   };
 
   // Store a copy of the original Backbone.sync
@@ -63,6 +64,11 @@
 
     // Basic Auth supports two modes: URL-based and function-based.
     var credentials, remoteUrl, remoteUrlParts;
+
+    // If there is no credentials on the model check if there is a fallback.
+    if (!model.credentials && Backbone.BasicAuth.defaultCredentials != false) {
+      model.credentials = Backbone.BasicAuth.defaultCredentials;
+    }
 
     if(model.credentials) {
       // Try function-based.

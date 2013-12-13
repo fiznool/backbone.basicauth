@@ -60,6 +60,7 @@
    * @return {object}         Reference to Backbone.sync for chaining
    */
   Backbone.sync = function (method, model, options) {
+    options = options || {};
 
     // Basic Auth supports two modes: URL-based and function-based.
     var credentials, remoteUrl, remoteUrlParts;

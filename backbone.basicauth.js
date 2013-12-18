@@ -40,9 +40,16 @@
   // Add a public method so that anything else can also create the header
   Backbone.BasicAuth = {
     getHeader: function(credentials) {
+      // Check for an existing token paramater to allow locally stored tokens
+      // Example: LocalStoarge, Cookies
+      var token = credentials.token || encode(credentials);
       return {
-        'Authorization': 'Basic ' + encode(credentials)
+        'Authorization': 'Basic ' + token
       };
+    },
+    // Public method for encoding credentials from email/token
+    getToken: function(credentials) {
+      return encode(credentials);
     }
   };
 

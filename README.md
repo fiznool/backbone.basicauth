@@ -34,10 +34,19 @@ model.credentials = function() {
 	};
 };
 
+// or ...
+model.credentials = function() {
+  return {
+    token: window.localStorage.token
+  };
+};
+
 model.fetch();
 ```
 
 This mode is good for authentication that may change when the app is used, e.g. if different users are able to authenticate with the app. The credentials can be hard coded or set dynamically.
+
+The token can be set directly on the model if store locally using a localStorage or cookie based `remember me` style authentication strategy.
 
 This mode is the most flexible. If you are unsure which mode to use, try this one first.
 
@@ -89,6 +98,26 @@ $.ajax({
   	password: 'pass'
 	})
 });
+
+```
+
+## Saving the access token for `remember me` style authentication
+
+If your application requires the ability to remember login credentials, saving the Base64 encoded token to localStorage or a cookie is a better option than storing the username and password directly.
+
+If you need/want to do this, there is a convenience function which will help you allow you to encode and store the token locally: `Backbone.BasicAuth.getToken()`.
+
+Example:
+
+``` js
+// Set the credenials on the users account model and store the token
+account.credentials = {
+  password: password,
+  username: username
+};
+account.credentials.token = Backbone.BasicAuth.getToken(account.credentials)
+
+if (window.localStorage) window.localStorage.token = account.credentials.token;
 
 ```
 

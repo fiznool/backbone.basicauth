@@ -39,9 +39,11 @@
 
   // Add a public method so that anything else can also create the header
   Backbone.BasicAuth = {
+    encode: encode,
     getHeader: function(credentials) {
+      var auth = typeof credentials == 'object' ? encode(credentials) : credentials;
       return {
-        'Authorization': 'Basic ' + encode(credentials)
+        'Authorization': 'Basic ' + auth
       };
     }
   };

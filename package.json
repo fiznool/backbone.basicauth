@@ -1,14 +1,11 @@
 {
   "name": "backbone.basicauth",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "HTTP Basic Authentication for Backbone",
   "main": "backbone.basicauth.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tjwebb/backbone.basicauth.git"
+    "url": "https://github.com/fiznool/backbone.basicauth.git"
   },
   "keywords": [
     "backbone",
@@ -20,7 +17,7 @@
   "author": "Tom Spencer <fiznool@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tjwebb/backbone.basicauth/issues"
+    "url": "https://github.com/fiznool/backbone.basicauth/issues"
   },
-  "homepage": "https://github.com/tjwebb/backbone.basicauth"
+  "homepage": "https://github.com/fiznool/backbone.basicauth"
 }

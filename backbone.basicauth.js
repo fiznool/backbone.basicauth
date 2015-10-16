@@ -1,5 +1,5 @@
 /*!
- * backbone.basicauth.js v0.4.0
+ * backbone.basicauth.js v0.4.1
  *
  * Adds HTTP Basic Authentication headers,
  * either by reading them from a model property,

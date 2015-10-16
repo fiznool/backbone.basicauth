@@ -106,6 +106,10 @@ The idea of this plugin is to adhere to the standard [HTTP Basic Authentication]
 
 ## Change Log
 
+### v0.4.1 (16th October 2015)
+
+- Integrated `package.json` for use with npm.
+
 ### v0.4.0 (23rd July 2013)
 
 - Re-introduced concept of setting Basic Auth credentials from a function, in addition to URL-based method.

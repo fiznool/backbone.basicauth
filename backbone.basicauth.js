@@ -13,6 +13,9 @@
   if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['underscore', 'backbone'], factory);
+    } else if (typeof exports !== "undefined") {
+        // CommonJS export
+        module.exports = factory(require("underscore"), require("backbone"));
     } else {
         // Browser globals
         root.amdWeb = factory(root._, root.Backbone);

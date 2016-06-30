@@ -1,6 +1,6 @@
 {
   "name": "backbone.basicauth",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Sync data through your Backbone Models and Collections to resources protected by HTTP Basic Authentication.",
   "main": "backbone.basicauth.js",
   "dependencies": {

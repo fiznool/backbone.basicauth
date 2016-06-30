@@ -106,6 +106,10 @@ The idea of this plugin is to adhere to the standard [HTTP Basic Authentication]
 
 ## Change Log
 
+### v0.4.2 (30th June 2016)
+
+- Added support for CommonJS.
+
 ### v0.4.1 (16th October 2015)
 
 - Integrated `package.json` for use with npm.
